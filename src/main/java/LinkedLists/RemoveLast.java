@@ -1,6 +1,6 @@
 package LinkedLists;
 
-public class append {
+public class RemoveLast {
 
     private Node head;
     private Node tail;
@@ -15,7 +15,7 @@ public class append {
         }
     }
 
-    public append(int value) {
+    public RemoveLast(int value) {
         Node newNode = new Node(value);
         head = newNode;
         tail = newNode;
@@ -65,25 +65,49 @@ public class append {
         length = 0;
     }
 
-    public void append(int value){
+    public void append(int value) {
         Node newNode = new Node(value);
-        if (length == 0){
+        if (length == 0) {
             head = newNode;
             tail = newNode;
-        }
-        else {
-            // a gente tem que dizer que o ultimo node vai apontar para o novo
-            // Eg. [10] -> [20] -> [30] (tail)
-            // [10] -> [20] -> [30] -> [40] (tail)
-            //    Se você não fizer tail.next = newNode:
-            //
-            //    O nó antigo ([30]) continuaria com next = null
-            //
-            //    O novo nó ([40]) nunca seria ligado à lista
+        } else {
             tail.next = newNode;
             tail = newNode;
         }
         length++;
     }
 
+    public Node removeLast(){
+        // checa se a LinkedList está vazia
+        if (length == 0){
+            return null;
+        }
+
+        // criamos temp e pre. o Pre vai setar o penultimo numero para colocar o tail lá (já que removemos o ultimo o
+        // tail tem que voltar) e o temp vai retornar o numero que removemos (que é o ultimo da lista)
+        var temp = head;
+        var pre = head;
+
+        // enquanto temp.next (o proximo node) não for vazio ele executa, isso nessa ordem faz com que temp SEMPRE
+        // chegue no ultimo numero e pre SEMPRE aponte para o penultimo
+        while (temp.next != null){
+            pre = temp;
+            temp = temp.next;
+        }
+
+        // setamos o tail para o penultimo (que agora é o ultimo numero da linked list apos removermos o Last)
+        tail = pre;
+        // o proximo node do tail é sempre nulo, pq o tail é sempre o final
+        tail.next = null;
+        length--;
+        if (length == 0){
+            head = null;
+            tail = null;
+        }
+
+        return temp;
+    }
+
 }
+
+
