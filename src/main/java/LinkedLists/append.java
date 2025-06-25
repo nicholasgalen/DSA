@@ -1,6 +1,6 @@
 package LinkedLists;
 
-class Exercise1 {
+public class append {
 
     private Node head;
     private Node tail;
@@ -14,15 +14,6 @@ class Exercise1 {
             this.value = value;
         }
     }
-
-
-    Exercise1(int value){
-        Node node = new Node(value);
-        head = node;
-        tail = node;
-        length = 1;
-    }
-
 
     public Node getHead() {
         return head;
@@ -61,6 +52,23 @@ class Exercise1 {
         }
     }
 
+    public void makeEmpty() {
+        head = null;
+        tail = null;
+        length = 0;
+    }
+
+    public void append(int value){
+        Node newNode = new Node(value);
+        if (length == 0){
+            head = newNode;
+            tail = newNode;
+        }
+        else {
+            tail.next = newNode;
+            tail = newNode;
+        }
+        length++;
+    }
+
 }
-
-
