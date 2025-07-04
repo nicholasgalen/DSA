@@ -95,8 +95,14 @@ public class prepend {
         return temp;
     }
 
-    public void prepend(){
-        
+    public void prepend(int value){
+        Node newNode = new Node(value);
+        if (length == 0) {
+            head = newNode;
+            tail = newNode;
+        }
+        newNode.next = head;
+        head = newNode;
+        length++;
     }
-
 }
