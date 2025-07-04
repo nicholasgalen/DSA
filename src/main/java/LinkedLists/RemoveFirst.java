@@ -1,6 +1,6 @@
 package LinkedLists;
 
-public class prepend {
+public class RemoveFirst {
 
     private Node head;
     private Node tail;
@@ -15,7 +15,7 @@ public class prepend {
         }
     }
 
-    public prepend(int value) {
+    public RemoveFirst(int value) {
         Node newNode = new Node(value);
         head = newNode;
         tail = newNode;
@@ -95,16 +95,30 @@ public class prepend {
         return temp;
     }
 
-    public void prepend(int value){
+    public void prepend(int value) {
         Node newNode = new Node(value);
         if (length == 0) {
             head = newNode;
             tail = newNode;
-        }
-        else{
+        } else {
             newNode.next = head;
             head = newNode;
-            length++;
         }
+        length++;
     }
+
+    public Node removeFirst(){
+        if (length == 0){
+            return null;
+        }
+        Node temp = head;
+        head = temp.next;
+        temp.next = null;
+        length--;
+        if (length == 0){
+            tail = null;
+        }
+        return temp;
+    }
+
 }
