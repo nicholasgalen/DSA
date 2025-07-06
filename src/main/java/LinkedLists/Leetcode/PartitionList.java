@@ -73,8 +73,12 @@ public class PartitionList {
 
     public void partitionList(int x){
         Node node = head;
+
+        // Os dummys guardam o inicio da lista
         Node d1 = new Node(0); // node numeros menores
         Node d2 = new Node(0); // node numeros maiores
+
+        // Os prevs guardam o final da lista
         Node prev1 = d1;
         Node prev2 = d2;
 
@@ -90,7 +94,10 @@ public class PartitionList {
             node = node.next;
         }
 
+        // Como o ultimo numero da lista dos numeros maiores (d2) ainda aponta para o proximo numero da lista possivelmente,
+        // temos que declarar ele como null para nao entrar em um ciclo infinito
         prev2.next = null;
+        // Usamos o dummy para guardar a ordem da lista e nao precisar iterar novamente para pegar o primeiro valor dela
         prev1.next = d2.next;
 
         head = d1.next;
