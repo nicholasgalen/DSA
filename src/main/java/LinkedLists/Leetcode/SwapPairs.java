@@ -57,8 +57,8 @@ public class SwapPairs {
     }
 
 
-    public Node swapPairs(Node head) {
-        if (head == null || head.next == null) return head;
+    public void swapPairs() {
+        if (head == null || head.next == null) return;
 
         Node dummy = new Node(0);
         dummy.next = head;
@@ -76,10 +76,7 @@ public class SwapPairs {
             first = first.next;
             if (first != null) second = first.next;
         }
-
-        return dummy.next;
+        head = dummy.next;
     }
-
-
 }
 
